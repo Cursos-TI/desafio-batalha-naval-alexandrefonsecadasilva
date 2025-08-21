@@ -2,6 +2,18 @@
 
 #define TAMANHO_TABULEIRO 10
 #define TAMANHO_NAVIO 3
+#define TAMANHO_HABILIDADE 5
+
+// Função para exibir uma matriz genérica (usada para habilidades)
+void exibirMatriz(int matriz[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE]) {
+    for (int i = 0; i < TAMANHO_HABILIDADE; i++) {
+        for (int j = 0; j < TAMANHO_HABILIDADE; j++) {
+            printf("%d ", matriz[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
 
 int main() {
     int tabuleiro[TAMANHO_TABULEIRO][TAMANHO_TABULEIRO];
@@ -41,13 +53,48 @@ int main() {
     }
 
     // 7) Exibir tabuleiro completo
-    printf("Tabuleiro 10x10 (0 = agua, 3 = navio)\\n\\n");
+    printf("=== Tabuleiro 10x10 (0 = agua, 3 = navio) ===\n\n");
     for (i = 0; i < TAMANHO_TABULEIRO; i++) {
         for (j = 0; j < TAMANHO_TABULEIRO; j++) {
             printf("%2d ", tabuleiro[i][j]);
         }
-        printf("\\n");
+        printf("\n");
     }
+
+    // 8) Matrizes de habilidades especiais
+    int cone[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE] = {
+        {0, 0, 1, 0, 0},
+        {0, 1, 1, 1, 0},
+        {1, 1, 1, 1, 1},
+        {0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0}
+    };
+
+    int cruz[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE] = {
+        {0, 0, 1, 0, 0},
+        {1, 1, 1, 1, 1},
+        {0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0}
+    };
+
+    int octaedro[TAMANHO_HABILIDADE][TAMANHO_HABILIDADE] = {
+        {0, 0, 1, 0, 0},
+        {0, 1, 1, 1, 0},
+        {0, 0, 1, 0, 0},
+        {0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0}
+    };
+
+    // 9) Exibir habilidades
+    printf("\n=== Habilidade: Cone ===\n");
+    exibirMatriz(cone);
+
+    printf("=== Habilidade: Cruz ===\n");
+    exibirMatriz(cruz);
+
+    printf("=== Habilidade: Octaedro ===\n");
+    exibirMatriz(octaedro);
 
     return 0;
 }
